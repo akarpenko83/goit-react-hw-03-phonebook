@@ -11,7 +11,25 @@ class App extends Component {
         contacts: INITIAL_CONTACTS,
         filter: '',
     };
+    componentDidMount() {
+        let storedContacts = JSON.parse(
+            localStorage.getItem('contactList'),
+        );
 
+        if (storedContacts) {
+            this.setState({
+                contacts: storedContacts,
+            });
+        }
+    }
+    componentDidUpdate(prevState) {
+        if (this.state.contacts !== prevState.contacts) {
+            localStorage.setItem(
+                'contactList',
+                JSON.stringify(this.state.contacts),
+            );
+        }
+    }
     onSubmit = contact => {
         if (
             this.state.contacts.find(
