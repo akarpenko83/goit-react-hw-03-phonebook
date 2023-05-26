@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Container } from './phonebook/Phonebook.styled';
 import INITIAL_CONTACTS from './phonebook/initContacts.json';
 import ContactForm from './phonebook/ContactForm';

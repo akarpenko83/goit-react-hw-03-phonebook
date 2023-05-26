@@ -25,7 +25,7 @@ export default class ContactForm extends Component {
         const contact = {
             id: nanoid(),
             name: form.elements.name.value,
-            number: form.elements.number.value,
+            number: Number(form.elements.number.value),
         };
         this.props.onSubmit(contact);
         this.formReset();

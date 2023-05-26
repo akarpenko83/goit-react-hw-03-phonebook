@@ -1,10 +1,9 @@
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import {
     ContactListContainer,
     ContactItem,
-    DeleteButton,
 } from './Phonebook.styled';
+import Contact from './Contact';
 export default function ContactList({
     contacts,
     onRemoveContact,
@@ -12,14 +11,12 @@ export default function ContactList({
     return (
         <ContactListContainer>
             {contacts.map(({ name, number, id }) => (
-                <ContactItem key={nanoid()}>
-                    {name}: {number}
-                    <DeleteButton
-                        type="button"
-                        onClick={() => onRemoveContact(id)}
-                    >
-                        Delete
-                    </DeleteButton>
+                <ContactItem key={id}>
+                    <Contact
+                        name={name}
+                        number={number}
+                        onDelete={() => onRemoveContact(id)}
+                    />
                 </ContactItem>
             ))}
         </ContactListContainer>
